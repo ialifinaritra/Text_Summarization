@@ -1,0 +1,7 @@
+transformers
+spacy
+pandas
+networkx
+sklearn
+numpy
+scipy
