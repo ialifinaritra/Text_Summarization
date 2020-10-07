@@ -30,8 +30,14 @@ flags.DEFINE_integer(
     "number of sentences in the summary"
 )
 
+flags.DEFINE_bool(
+    "visualization",
+    False,
+    "visualize text or not"
+)
 
-def summarize(model, method, text, nb_sentences):
+
+def summarize(model, method, text, nb_sentences, viz=True):
     summarizer = Summarizer()
     summarizer.init_model(model, log=True)
 
@@ -39,8 +45,13 @@ def summarize(model, method, text, nb_sentences):
     
     if method == 'mean':
         summary = summarizer.mean_similarity_summary(nb_sentences=nb_sentences)
+
     elif method == 'clustering':
-        summary = summarizer.clustering_summary(nb_clusters=nb_sentences, nb_top=2)
+        summary, cluster_results = summarizer.clustering_summary(nb_clusters=nb_sentences, nb_top=2, return_clusters=True)
+        labels, cluster_indices = cluster_results
+        if viz:
+            summarizer.text_visualization(cluster_labels=labels, plot_lib='plotly')
+
     elif method == 'graph':
         summary = summarizer.graph_summary(nb_sentences=nb_sentences)
 
@@ -61,9 +72,10 @@ def main(_):
     method = FLAGS.method 
     path_text = FLAGS.text_path
     nb_sentences = FLAGS.nb_sentences
+    viz = FLAGS.visualization
 
     text = load_preprocess_text(path_text)
-    summary = summarize(model, method, text, nb_sentences)
+    summary = summarize(model, method, text, nb_sentences,viz)
 
     for sentence in summary:
         print(sentence)
