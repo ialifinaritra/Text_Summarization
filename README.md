@@ -1,4 +1,4 @@
-<h1 align='center'> French Text Summarization </h1>
+<h1 align='center'> French Text Summarization <img alt="APM" src="https://img.shields.io/apm/l/npm"> </h1> 
 
 # Introduction
 
@@ -32,7 +32,7 @@ python3 -m spacy download fr_core_news_md
 You can choose `flaubert` or `camembert` for the model and `clustering` , `mean` or `graph` for the summarization methods.
 
 ### Demos
-The original text can be seen in the first part of this [article] (https://fr.wikipedia.org/wiki/Terre).
+The original text can be seen in the first part of this [article](https://fr.wikipedia.org/wiki/Terre).
 The following text is the summary produced by graph method : 
 <pre><code>
 La Terre est la troisième planète par ordre d'éloignement au Soleil et la cinquième plus grande aussi bien par la masse que le diamètre du Système solaire.
