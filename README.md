@@ -2,7 +2,7 @@
 
 # Introduction
 
-This Module is a Summarizer using [Hugging face's Transformers library] (https://huggingface.co/transformers/), which provides general-purpose architectures for NLP, in particual the BERT architecture.
+This Module is a Summarizer using [Hugging face's Transformers library](https://huggingface.co/transformers/), which provides general-purpose architectures for NLP, in particual the BERT architecture.
 
 It can be used with two NLP pre-trained french BERT based models:
 * [CamemBERT](https://camembert-model.fr/)
