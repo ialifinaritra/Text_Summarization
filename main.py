@@ -37,7 +37,7 @@ flags.DEFINE_bool(
 )
 
 
-def summarize(model, method, text, nb_sentences, viz=True):
+def summarize(model, method, text, nb_sentences,viz=False):
     summarizer = Summarizer()
     summarizer.init_model(model, log=True)
 
@@ -72,14 +72,11 @@ def main(_):
     method = FLAGS.method 
     path_text = FLAGS.text_path
     nb_sentences = FLAGS.nb_sentences
-    viz = FLAGS.visualization
 
     text = load_preprocess_text(path_text)
     summary = summarize(model, method, text, nb_sentences,viz)
-
     for sentence in summary:
         print(sentence)
-
 
 
 if __name__ == '__main__':
