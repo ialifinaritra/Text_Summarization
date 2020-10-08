@@ -18,3 +18,26 @@ With this method, a cluster labels in the 2D space after TSNE dimension reductio
 ### Graph Summary:
 This third summarization method makes a similarity graph between the different lines of the text data. Then, it calculates a score for each sentence using the pagerank algorithm. This score is used to produce the final summary.
 To use this method, call the `graph_summary` method on the summarizer. Once again, you can chose how may sentence you want for the summary with the `nb_sentences` parameter.
+
+# Usage
+### Requirements
+The code is designed to run on Python 3 and works with `pytorch 1.6`. Some major dependencies is needed to be installed : 
+<pre><code>pip install transformers
+python3 -m spacy download fr_core_news_md
+</code></pre>
+
+### Running 
+<pre><code>python3 main.py --text_path=path/to/text --model='flaubert' --method='clustering' --nb_sentences=5 </code></pre>
+
+You can choose `flaubert` or `camembert` for the model and `clustering` , `mean` or `graph` for the summarization methods.
+
+### Demos
+The original text can be seen in the first part of this [article] (https://fr.wikipedia.org/wiki/Terre).
+The following text is the summary produced by graph method : 
+<pre><code>
+La Terre est la troisième planète par ordre d'éloignement au Soleil et la cinquième plus grande aussi bien par la masse que le diamètre du Système solaire.
+L'axe de rotation de la Terre possède une inclinaison de 23°, ce qui cause l'apparition des saisons.
+Une combinaison de facteurs tels que la distance de la Terre au Soleil (environ 150 millions de kilomètres, aussi appelée unité astronomique), son atmosphère, sa couche d'ozone, son champ magnétique et son évolution géologique ont permis à la vie d'évoluer et de se développer.
+Elle est la planète la plus dense du Système solaire ainsi que la plus grande et massive des quatre planètes telluriques.
+La structure interne de la Terre est géologiquement active, le noyau interne solide et le noyau externe liquide (composés tous deux essentiellement de fer) permettant notamment de générer le champ magnétique terrestre par effet dynamo et la convection du manteau terrestre (composé de roches silicatées) étant la cause de la tectonique des plaques
+</code></pre>
